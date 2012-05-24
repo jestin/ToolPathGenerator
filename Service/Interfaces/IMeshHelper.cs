@@ -6,5 +6,6 @@ namespace Service.Interfaces
     {
         Mesh CenterMesh(Mesh mesh);
         Mesh PutMeshOnPlatform(Mesh mesh);
+        bool IsMeshManifold(Mesh mesh);
     }
 }
