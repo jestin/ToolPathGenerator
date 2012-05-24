@@ -26,6 +26,7 @@ namespace WebGenerator
         [WebMethod]
         public string GenerateGCode(string stlData)
         {
+            StlData = stlData;
             Presenter.CreateGCodeFromStlData();
 
             return GCode;
