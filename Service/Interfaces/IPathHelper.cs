@@ -2,7 +2,7 @@
 
 namespace Service.Interfaces
 {
-    internal interface IPathHelper
+    public interface IPathHelper
     {
         Path AppendPaths(Path basePath, Path toAppend);
     }

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Service.Helpers;
 using Service.Interfaces;
 using Service.Models;
 
@@ -8,6 +7,13 @@ namespace Service
 {
     public class Pather : IPather
     {
+        private readonly IPathHelper _pathHelper;
+
+        public Pather(IPathHelper pathHelper)
+        {
+            _pathHelper = pathHelper;
+        }
+
         public Path GeneratePath(IEnumerable<Layer> layers)
         {
             var complete = new Path();
@@ -41,8 +47,7 @@ namespace Service
                     }
                 }
 
-                IPathHelper pathHelper = new PathHelperWrapper();
-                complete = pathHelper.AppendPaths(complete, GeneratePathForLayer(layer, prevLayers, nextLayers));
+                complete = _pathHelper.AppendPaths(complete, GeneratePathForLayer(layer, prevLayers, nextLayers));
             }
 
             return complete;
