@@ -25,7 +25,7 @@ namespace TestBlockers
             Presenter.View = IoC.Resolve<IToolPathGeneratorView>();
 
             Presenter.View.FileName = args.Length > 0 ? args[0] : null;
-            Presenter.CreateGCodeFromModel();
+            Presenter.CreateGCodeFromStlFile();
         }
     }
 }

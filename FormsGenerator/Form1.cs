@@ -18,6 +18,11 @@ namespace FormsGenerator
             set { StlTextBox.Text = value; }
         }
 
+        public string StlData
+        {
+            get { throw new NotImplementedException(); }
+        }
+
         public string GCode
         {
             set { gCodeTextBox.Text = value; }
@@ -36,7 +41,7 @@ namespace FormsGenerator
 
         private void GenerateGCode_button_Click(object sender, EventArgs e)
         {
-            Presenter.CreateGCodeFromModel();
+            Presenter.CreateGCodeFromStlFile();
         }
     }
 }
