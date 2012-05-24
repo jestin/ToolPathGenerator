@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using NUnit.Framework;
 using Rhino.Mocks;
 using Service;
@@ -37,12 +38,7 @@ namespace TestBlockerTests
         [Test]
         public void ReadStl_From_Stream()
         {
-            _stream = new MemoryStream();
-
-            var header = new byte[80];
-            Buffer.BlockCopy("SOLID".ToCharArray(), 0, header, 0, 10);
-            _stream.BeginWrite(header, 0, 80, null, null);
-
+            _stream = new MemoryStream(Encoding.Default.GetBytes("SOLID"));
             _reader.ReadStl(_stream);
         }
 
