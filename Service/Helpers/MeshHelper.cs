@@ -1,5 +1,4 @@
-﻿using System;
-using Service.Interfaces;
+﻿using Service.Interfaces;
 using Service.Models;
 
 namespace Service.Helpers
