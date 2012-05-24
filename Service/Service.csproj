@@ -51,10 +51,12 @@
   <ItemGroup>
     <Compile Include="DependencyRegistry.cs" />
     <Compile Include="GcodeGenerator.cs" />
+    <Compile Include="Helpers\GeometryHelper.cs" />
     <Compile Include="Helpers\MeshHelper.cs" />
     <Compile Include="Helpers\PathHelper.cs" />
     <Compile Include="Helpers\PathHelperWrapper.cs" />
     <Compile Include="Interfaces\IGCodeGenerator.cs" />
+    <Compile Include="Interfaces\IGeometryHelper.cs" />
     <Compile Include="Interfaces\IMeshHelper.cs" />
     <Compile Include="Interfaces\IPather.cs" />
     <Compile Include="Interfaces\IPathHelper.cs" />

@@ -13,6 +13,7 @@ namespace Service
             For<IPather>().Use<Pather>();
             For<IMeshHelper>().Use<MeshHelper>();
             For<IGCodeGenerator>().Use<GCodeGenerator>();
+            For<IGeometryHelper>().Use<GeometryHelper>();
         }
     }
 }
