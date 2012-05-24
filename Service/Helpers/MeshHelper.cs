@@ -1,4 +1,5 @@
-﻿using Service.Interfaces;
+﻿using System;
+using Service.Interfaces;
 using Service.Models;
 
 namespace Service.Helpers
@@ -13,6 +14,11 @@ namespace Service.Helpers
         public Mesh PutMeshOnPlatform(Mesh mesh)
         {
             return new Mesh();
+        }
+
+        public bool IsMeshManifold(Mesh mesh)
+        {
+            return true;
         }
 
         public Point CalculateCenterVector(Mesh mesh)

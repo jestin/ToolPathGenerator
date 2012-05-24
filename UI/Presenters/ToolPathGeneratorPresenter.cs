@@ -39,6 +39,12 @@ namespace UI.Presenters
         public void CreateGCodeFromModel()
         {
             var mesh = _stlReader.ReadStl(View.FileName);
+
+            if (!_meshHelper.IsMeshManifold(mesh))
+            {
+                return;
+            }
+
             mesh = _meshHelper.CenterMesh(mesh);
             var layers = _slicer.Slice(mesh);
             var path = _pather.GeneratePath(layers);
