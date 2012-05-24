@@ -6,6 +6,6 @@ namespace Service.Interfaces
     public interface IStlReader
     {
         Mesh ReadStl(string fileName);
-        Mesh ReadStl(FileStream file);
+        Mesh ReadStl(Stream file);
     }
 }

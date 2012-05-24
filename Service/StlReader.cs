@@ -19,7 +19,7 @@ namespace Service
             }
         }
 
-        public Mesh ReadStl(FileStream file)
+        public Mesh ReadStl(Stream file)
         {
             // read header
             var header = new byte[80];
