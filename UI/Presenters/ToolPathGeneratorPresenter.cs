@@ -1,4 +1,7 @@
-﻿using Framework.MVP;
+﻿using System;
+using System.IO;
+using System.Text;
+using Framework.MVP;
 using Service.Interfaces;
 using UI.Views;
 
@@ -36,7 +39,7 @@ namespace UI.Presenters
 
         #region IToolPathGeneratorPresenter Implementation
 
-        public void CreateGCodeFromModel()
+        public void CreateGCodeFromStlFile()
         {
             var mesh = _stlReader.ReadStl(View.FileName);
 
@@ -45,6 +48,16 @@ namespace UI.Presenters
                 return;
             }
 
+            mesh = _meshHelper.CenterMesh(mesh);
+            var layers = _slicer.Slice(mesh);
+            var path = _pather.GeneratePath(layers);
+            View.GCode = _generator.GenerateGCode(path);
+        }
+
+        public void CreateGCodeFromStlData()
+        {
+            var stlData = new MemoryStream(Encoding.Default.GetBytes(View.StlData));
+            var mesh = _stlReader.ReadStl(stlData);
             mesh = _meshHelper.CenterMesh(mesh);
             var layers = _slicer.Slice(mesh);
             var path = _pather.GeneratePath(layers);

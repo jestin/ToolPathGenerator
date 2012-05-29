@@ -5,6 +5,7 @@ namespace UI.Presenters
 {
     public interface IToolPathGeneratorPresenter : IPresenter<IToolPathGeneratorView, IToolPathGeneratorPresenter>
     {
-        void CreateGCodeFromModel();
+        void CreateGCodeFromStlFile();
+        void CreateGCodeFromStlData();
     }
 }
