@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace RestAPI
@@ -22,6 +18,12 @@ namespace RestAPI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "GenerateToolPath", // Route name
+                "{ToolPath}/{Generate}/{stlData}", // URL with parameters
+                new { controller = "ToolPath", action = "Generate", stlData = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
@@ -35,6 +37,13 @@ namespace RestAPI
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            StructureMap.ObjectFactory.Initialize(x =>
+            {
+                x.AddRegistry(new DependencyRegistry());
+                x.AddRegistry(new UI.DependencyRegistry());
+                x.AddRegistry(new Service.DependencyRegistry());
+            });
         }
     }
 }
