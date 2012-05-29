@@ -7,7 +7,7 @@ namespace Service
     {
         public string GenerateGCode(Path path)
         {
-            return "G1 X0 Y0 Z0\n";
+            return "G1 X0 Y0 Z0";
         }
     }
 }
