@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebGenerator", "WebGenerato
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsGenerator", "FormsGenerator\FormsGenerator.csproj", "{E46E9339-324D-4B59-80F9-00BF3DA9DC9B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestAPI", "RestAPI\RestAPI.csproj", "{006F9A00-BB00-44C4-9EDF-094975A2AB9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{E46E9339-324D-4B59-80F9-00BF3DA9DC9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E46E9339-324D-4B59-80F9-00BF3DA9DC9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E46E9339-324D-4B59-80F9-00BF3DA9DC9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{006F9A00-BB00-44C4-9EDF-094975A2AB9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{006F9A00-BB00-44C4-9EDF-094975A2AB9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{006F9A00-BB00-44C4-9EDF-094975A2AB9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{006F9A00-BB00-44C4-9EDF-094975A2AB9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
