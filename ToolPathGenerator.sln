@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleGenerator", "TestBlockers\ConsoleGenerator.csproj", "{D9593C29-E0D7-4224-AF09-68B2D5FFB52A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolPathGeneratorTests", "TestBlockerTests\ToolPathGeneratorTests.csproj", "{EE83F68D-1A66-4271-9015-77165671D561}"
