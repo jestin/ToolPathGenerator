@@ -34,6 +34,11 @@ namespace WebGenerator
             }
         }
 
+        public string StlData
+        {
+            get { throw new NotImplementedException(); }
+        }
+
         public string GCode
         {
             set
@@ -51,7 +56,7 @@ namespace WebGenerator
 
         protected void GenerateButton_Click(object sender, EventArgs e)
         {
-            Presenter.CreateGCodeFromModel();
+            Presenter.CreateGCodeFromStlFile();
         }
     }
 }
