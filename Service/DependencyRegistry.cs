@@ -12,7 +12,9 @@ namespace Service
             For<ISlicer>().Use<Slicer>();
             For<IPather>().Use<Pather>();
             For<IMeshHelper>().Use<MeshHelper>();
+            For<IPathHelper>().Use<PathHelper>();
             For<IGCodeGenerator>().Use<GCodeGenerator>();
+            For<IGeometryHelper>().Use<GeometryHelper>();
         }
     }
 }

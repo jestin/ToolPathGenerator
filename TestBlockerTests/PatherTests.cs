@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using Rhino.Mocks;
 using Service;
+using Service.Interfaces;
 using Service.Models;
 
 namespace TestBlockerTests
@@ -12,11 +13,13 @@ namespace TestBlockerTests
         private readonly MockRepository _mock = new MockRepository();
 
         private Pather _pather;
+        private IPathHelper _pathHelper;
 
         [SetUp]
         public void Setup()
         {
-            _pather = new Pather();
+            _pathHelper = _mock.StrictMock(typeof(IPathHelper)) as IPathHelper;
+            _pather = new Pather(_pathHelper);
         }
 
         [TearDown]
@@ -30,6 +33,9 @@ namespace TestBlockerTests
         [Test]
         public void GeneratePath_Succeeds()
         {
+            _pathHelper.Stub(x => x.AppendPaths(Arg<Path>.Is.Anything, Arg<Path>.Is.Anything)).Return(new Path());
+
+            _mock.ReplayAll();
             _pather.GeneratePath(GetLayerList());
         }
 

@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.IO;
+using System.Text;
+using NUnit.Framework;
 using Rhino.Mocks;
 using Service;
 
@@ -10,6 +13,8 @@ namespace TestBlockerTests
         private readonly MockRepository _mock = new MockRepository();
 
         private StlReader _reader;
+
+        private Stream _stream;
 
         [SetUp]
         public void Setup()
@@ -31,8 +36,10 @@ namespace TestBlockerTests
         }
 
         [Test]
-        public void ReadStl_From_FileStream()
+        public void ReadStl_From_Stream()
         {
+            _stream = new MemoryStream(Encoding.Default.GetBytes("SOLID"));
+            _reader.ReadStl(_stream);
         }
 
 // ReSharper restore InconsistentNaming

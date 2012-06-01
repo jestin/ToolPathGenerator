@@ -34,6 +34,11 @@ namespace TestBlockers.Views
             }
         }
 
+        public string StlData
+        {
+            get { throw new NotImplementedException(); }
+        }
+
         public string GCode
         {
             set

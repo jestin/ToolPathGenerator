@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleGenerator", "TestBlockers\ConsoleGenerator.csproj", "{D9593C29-E0D7-4224-AF09-68B2D5FFB52A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolPathGeneratorTests", "TestBlockerTests\ToolPathGeneratorTests.csproj", "{EE83F68D-1A66-4271-9015-77165671D561}"
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebGenerator", "WebGenerator\WebGenerator.csproj", "{86B87E28-1CD1-4777-AE2F-935D85BE5479}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsGenerator", "FormsGenerator\FormsGenerator.csproj", "{E46E9339-324D-4B59-80F9-00BF3DA9DC9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestAPI", "RestAPI\RestAPI.csproj", "{006F9A00-BB00-44C4-9EDF-094975A2AB9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,10 @@ Global
 		{E46E9339-324D-4B59-80F9-00BF3DA9DC9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E46E9339-324D-4B59-80F9-00BF3DA9DC9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E46E9339-324D-4B59-80F9-00BF3DA9DC9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{006F9A00-BB00-44C4-9EDF-094975A2AB9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{006F9A00-BB00-44C4-9EDF-094975A2AB9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{006F9A00-BB00-44C4-9EDF-094975A2AB9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{006F9A00-BB00-44C4-9EDF-094975A2AB9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,10 +1,11 @@
-﻿using Service.Models;
+﻿using Service.Interfaces;
+using Service.Models;
 
 namespace Service.Helpers
 {
-    public static class PathHelper
+    public class PathHelper : IPathHelper
     {
-        public static Path AppendPaths(Path basePath, Path toAppend)
+        public Path AppendPaths(Path basePath, Path toAppend)
         {
             return new Path();
         }

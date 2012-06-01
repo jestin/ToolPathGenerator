@@ -15,6 +15,11 @@ namespace Service.Helpers
             return new Mesh();
         }
 
+        public bool IsMeshManifold(Mesh mesh)
+        {
+            return true;
+        }
+
         public Point CalculateCenterVector(Mesh mesh)
         {
             return new Point();
