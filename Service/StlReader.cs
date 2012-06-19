@@ -60,8 +60,9 @@ namespace Service
 
         public Mesh CreateMeshFromBinary(MemoryStream stream)
         {
-            // do all the stuff to create a mesh
             var br = new BinaryReader(stream);
+
+            // seeks past the header
             br.BaseStream.Seek(80, SeekOrigin.Begin);
 
             var numberOfFacets = br.ReadInt32();
@@ -97,6 +98,7 @@ namespace Service
                                                        }
                                     });
 
+                // unused attribute byte count
                 var dummy = br.ReadInt16();
             }
 
