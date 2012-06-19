@@ -26,15 +26,17 @@ namespace Service
             file.Read(header, 0, 80);
             file.Position = 0;
 
-            // check if ASCII or binary
-            if (header.ToString().ToUpper() == "SOLID")
-            {
-                // ASCII
-                var sr = new StreamReader(file);
-                return ReadStlText(sr.ReadToEnd());
-            }
-            
-            // binary
+            return header.ToString().ToUpper() == "SOLID" ? CreateMeshFromAscii(ReadAsciiStl(file)) : CreateMeshFromBinary(ReadBinaryStl(file));
+        }
+
+        public string ReadAsciiStl(Stream file)
+        {
+            var sr = new StreamReader(file);
+            return sr.ReadToEnd();
+        }
+
+        public byte[] ReadBinaryStl(Stream file)
+        {
             byte[] data;
             var buffer = new byte[32768];
             using (var ms = new MemoryStream())
@@ -51,17 +53,17 @@ namespace Service
                 }
             }
 
-            return ReadStlData(data);
+            return data;
         }
 
-        private Mesh ReadStlText(string data)
+        public Mesh CreateMeshFromAscii(string data)
         {
             // do all the stuff to create a mesh
 
             return new Mesh();
         }
 
-        private Mesh ReadStlData(byte[] data)
+        public Mesh CreateMeshFromBinary(byte[] data)
         {
             // do all the stuff to create a mesh
 

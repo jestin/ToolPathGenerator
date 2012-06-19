@@ -20,7 +20,7 @@ namespace Service
 
         public IEnumerable<Layer> Slice(Mesh mesh)
         {
-            var layerHeight = 0.3;
+            const double layerHeight = 0.3;
             double xMin, xMax, yMin, yMax, zMin, zMax;
             _meshHelper.CalculateBounds(mesh, out xMin, out xMax, out yMin, out yMax, out zMin, out zMax);
 
