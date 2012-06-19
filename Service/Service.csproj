@@ -65,6 +65,7 @@
     <Compile Include="Interfaces\IPathHelper.cs" />
     <Compile Include="Interfaces\ISlicer.cs" />
     <Compile Include="Interfaces\IStlReader.cs" />
+    <Compile Include="Models\Facet.cs" />
     <Compile Include="Models\Layer.cs" />
     <Compile Include="Models\Line.cs" />
     <Compile Include="Models\Mesh.cs" />
