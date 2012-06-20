@@ -5,6 +5,9 @@ using Service.Models;
 
 namespace Service
 {
+    /// <summary>
+    /// This class is for taking a set of sliced layers and generating a non-coded tool path (no GCode yet!)
+    /// </summary>
     public class Pather : IPather
     {
         private readonly IPathHelper _pathHelper;

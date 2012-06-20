@@ -3,6 +3,9 @@ using Service.Models;
 
 namespace Service
 {
+    /// <summary>
+    /// This class is for taking a non-coded path and encoding it into GCode
+    /// </summary>
     public class GCodeGenerator : IGCodeGenerator
     {
         public string GenerateGCode(Path path)

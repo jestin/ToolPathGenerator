@@ -5,6 +5,9 @@ using Service.Models;
 
 namespace Service
 {
+    /// <summary>
+    /// This class is for slicing meshes into 2D layers
+    /// </summary>
     public class Slicer : ISlicer
     {
         private readonly IMeshHelper _meshHelper;

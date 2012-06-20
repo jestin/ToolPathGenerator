@@ -6,6 +6,9 @@ using Service.Models;
 
 namespace Service
 {
+    /// <summary>
+    /// This class is for creating meshes from both binary and ascii stl files
+    /// </summary>
     public class StlReader : IStlReader
     {
         public Mesh ReadStl(string fileName)
