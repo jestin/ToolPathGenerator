@@ -5,7 +5,7 @@ using Service;
 using Service.Interfaces;
 using Service.Models;
 
-namespace TestBlockerTests
+namespace ToolPathGeneratorTests
 {
     [TestFixture]
     public class PatherTests

@@ -3,7 +3,7 @@ using Rhino.Mocks;
 using Service;
 using Service.Models;
 
-namespace TestBlockerTests
+namespace ToolPathGeneratorTests
 {
     [TestFixture]
     public class GCodeGeneratorTests

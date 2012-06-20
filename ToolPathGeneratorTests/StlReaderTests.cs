@@ -4,7 +4,7 @@ using NUnit.Framework;
 using Rhino.Mocks;
 using Service;
 
-namespace TestBlockerTests
+namespace ToolPathGeneratorTests
 {
     [TestFixture]
     public class StlReaderTests
