@@ -44,6 +44,11 @@ namespace Service.Helpers
 
         public bool IsMeshManifold(Mesh mesh)
         {
+            if (mesh == null || mesh.Facets == null)
+            {
+                return false;
+            }
+
             return true;
         }
 

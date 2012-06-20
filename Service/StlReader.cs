@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Text;
 using Service.Interfaces;
 using Service.Models;
 
@@ -27,12 +28,12 @@ namespace Service
         {
             // read header
             var header = new byte[80];
-            file.Read(header, 0, 80);
+            var headerString = Encoding.ASCII.GetString(header, 0, file.Read(header, 0, 80)).ToUpper();
             file.Position = 0;
 
             try
             {
-                return header.ToString().ToUpper() == "SOLID"
+                return headerString.StartsWith("SOLID")
                        ? CreateMeshFromAscii(ReadAsciiStl(file))
                        : CreateMeshFromBinary(ReadBinaryStl(file));
             }
@@ -63,9 +64,64 @@ namespace Service
 
         public Mesh CreateMeshFromAscii(string data)
         {
-            // do all the stuff to create a mesh
+            var lines = data.ToUpper().Split(new[] { Environment.NewLine }, StringSplitOptions.None);
 
-            return new Mesh();
+            var mesh = new Mesh { Facets = new Collection<Facet>() };
+
+            Facet facet = null;
+            foreach (var line in lines)
+            {
+                var tokens = line.Split();
+
+                if (tokens[0] == ("FACET"))
+                {
+                    facet = new Facet
+                                {
+                                    Normal = new Point
+                                                 {
+                                                     X = float.Parse(tokens[2]),
+                                                     Y = float.Parse(tokens[3]),
+                                                     Z = float.Parse(tokens[4])
+                                                 }
+                                };
+                }
+
+                if(tokens[0] == "OUTER" && tokens[1] == "LOOP")
+                {
+                    if (facet != null)
+                    {
+                        facet.Vertices = new Collection<Point>();
+                    }
+                    else
+                    {
+                        throw new ApplicationException();
+                    }
+                }
+
+                if (tokens[0] == "VERTEX")
+                {
+                    if (facet != null && facet.Vertices != null)
+                    {
+                        facet.Vertices.Add(new Point
+                                               {
+                                                   X = float.Parse(tokens[1]),
+                                                   Y = float.Parse(tokens[2]),
+                                                   Z = float.Parse(tokens[3])
+                                               });
+                    }
+                    else
+                    {
+                        throw new ApplicationException();
+                    }
+                }
+
+                if (tokens[0] == "ENDFACET")
+                {
+                    mesh.Facets.Add(facet);
+                }
+            }
+
+            return mesh;
         }
 
         public Mesh CreateMeshFromBinary(MemoryStream stream)
@@ -109,7 +165,7 @@ namespace Service
                                     });
 
                 // unused attribute byte count
-                var dummy = br.ReadInt16();
+                br.ReadInt16();
             }
 
             return mesh;
