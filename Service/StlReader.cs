@@ -27,9 +27,16 @@ namespace Service
             file.Read(header, 0, 80);
             file.Position = 0;
 
-            return header.ToString().ToUpper() == "SOLID"
+            try
+            {
+                return header.ToString().ToUpper() == "SOLID"
                        ? CreateMeshFromAscii(ReadAsciiStl(file))
                        : CreateMeshFromBinary(ReadBinaryStl(file));
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         public string ReadAsciiStl(Stream file)
