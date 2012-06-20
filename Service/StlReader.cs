@@ -53,7 +53,7 @@ namespace Service
         {
             var buffer = new byte[32768];
             var ms = new MemoryStream();
-            var read = 0;
+            int read;
             while ((read = file.Read(buffer, 0, buffer.Length)) > 0)
             {
                 ms.Write(buffer, 0, read);
