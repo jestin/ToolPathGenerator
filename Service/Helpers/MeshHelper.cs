@@ -1,18 +1,29 @@
-﻿using Service.Interfaces;
+﻿using System.Linq;
+using Service.Interfaces;
 using Service.Models;
 
 namespace Service.Helpers
 {
     public class MeshHelper : IMeshHelper
     {
-        public Mesh CenterMesh(Mesh mesh)
+        public void CenterMesh(Mesh mesh)
         {
-            return new Mesh();
+            TranslateMesh(mesh, CalculateCenterVector(mesh));
         }
 
-        public Mesh PutMeshOnPlatform(Mesh mesh)
+        public void PutMeshOnPlatform(Mesh mesh)
         {
-            return new Mesh();
+            TranslateMesh(mesh, CalculatePutOnPlatformVector(mesh));
+        }
+
+        public void TranslateMesh(Mesh mesh, Point vector)
+        {
+            foreach (var vertex in mesh.Facets.SelectMany(facet => facet.Vertices))
+            {
+                vertex.X += vector.X;
+                vertex.Y += vector.Y;
+                vertex.Z += vector.Z;
+            }
         }
 
         public bool IsMeshManifold(Mesh mesh)
@@ -22,17 +33,67 @@ namespace Service.Helpers
 
         public Point CalculateCenterVector(Mesh mesh)
         {
-            return new Point();
+            float minX, minY, minZ, maxX, maxY, maxZ;
+            CalculateBounds(mesh, out minX, out minY, out minZ, out maxX, out maxY, out maxZ);
+
+            return new Point
+                {
+                    X = -((minX + maxX) / 2),
+                    Y = -((minY + maxY) / 2),
+                    Z = -minZ
+                };
         }
 
         public Point CalculatePutOnPlatformVector(Mesh mesh)
         {
-            return new Point();
+            float minX, minY, minZ, maxX, maxY, maxZ;
+            CalculateBounds(mesh, out minX, out minY, out minZ, out maxX, out maxY, out maxZ);
+
+            return new Point
+            {
+                X = 0,
+                Y = 0,
+                Z = -minZ
+            };
         }
 
-        public void CalculateBounds(Mesh mesh, out double minX, out double maxX, out double minY, out double maxY, out double minZ, out double maxZ)
+        public void CalculateBounds(Mesh mesh, out float minX, out float maxX, out float minY, out float maxY, out float minZ, out float maxZ)
         {
-            minX = maxX = minY = maxY = minZ = maxZ = 0;
+            minX = minY = minZ = float.MaxValue;
+            maxX = maxY = maxZ = float.MinValue;
+
+            foreach (var point in mesh.Facets.SelectMany(facet => facet.Vertices))
+            {
+                if (point.X < minX)
+                {
+                    minX = point.X;
+                }
+
+                if (point.Y < minY)
+                {
+                    minY = point.Y;
+                }
+
+                if (point.Z < minZ)
+                {
+                    minZ = point.Z;
+                }
+
+                if (point.X > maxX)
+                {
+                    maxX = point.X;
+                }
+
+                if (point.Y > maxY)
+                {
+                    maxY = point.Y;
+                }
+
+                if (point.Z > maxZ)
+                {
+                    maxZ = point.Z;
+                }
+            }
         }
     }
 }

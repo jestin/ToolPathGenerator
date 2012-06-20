@@ -65,7 +65,7 @@
       <Project>{37476E0F-32EE-46CD-8E09-28DBA9C67E8A}</Project>
       <Name>Service</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TestBlockers\ConsoleGenerator.csproj">
+    <ProjectReference Include="..\ToolPathGenerator\ConsoleGenerator.csproj">
       <Project>{D9593C29-E0D7-4224-AF09-68B2D5FFB52A}</Project>
       <Name>ConsoleGenerator</Name>
     </ProjectReference>

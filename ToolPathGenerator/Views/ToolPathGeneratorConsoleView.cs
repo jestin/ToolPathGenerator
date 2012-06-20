@@ -2,7 +2,7 @@
 using UI.Presenters;
 using UI.Views;
 
-namespace TestBlockers.Views
+namespace ToolPathGenerator.Views
 {
     class ToolPathGeneratorConsoleView : IToolPathGeneratorView
     {

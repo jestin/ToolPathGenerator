@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 using Framework.MVP;
 using Service.Interfaces;
@@ -48,7 +47,7 @@ namespace UI.Presenters
                 return;
             }
 
-            mesh = _meshHelper.CenterMesh(mesh);
+            _meshHelper.CenterMesh(mesh);
             var layers = _slicer.Slice(mesh);
             var path = _pather.GeneratePath(layers);
             View.GCode = _generator.GenerateGCode(path);
@@ -58,7 +57,7 @@ namespace UI.Presenters
         {
             var stlData = new MemoryStream(Encoding.Default.GetBytes(View.StlData));
             var mesh = _stlReader.ReadStl(stlData);
-            mesh = _meshHelper.CenterMesh(mesh);
+            _meshHelper.CenterMesh(mesh);
             var layers = _slicer.Slice(mesh);
             var path = _pather.GeneratePath(layers);
             View.GCode = _generator.GenerateGCode(path);

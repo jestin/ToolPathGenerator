@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using Service.Interfaces;
 using Service.Models;
@@ -26,46 +27,82 @@ namespace Service
             file.Read(header, 0, 80);
             file.Position = 0;
 
-            // check if ASCII or binary
-            if (header.ToString().ToUpper() == "SOLID")
-            {
-                // ASCII
-                var sr = new StreamReader(file);
-                return ReadStlText(sr.ReadToEnd());
-            }
-            
-            // binary
-            byte[] data;
+            return header.ToString().ToUpper() == "SOLID"
+                       ? CreateMeshFromAscii(ReadAsciiStl(file))
+                       : CreateMeshFromBinary(ReadBinaryStl(file));
+        }
+
+        public string ReadAsciiStl(Stream file)
+        {
+            var sr = new StreamReader(file);
+            return sr.ReadToEnd();
+        }
+
+        public MemoryStream ReadBinaryStl(Stream file)
+        {
             var buffer = new byte[32768];
-            using (var ms = new MemoryStream())
+            var ms = new MemoryStream();
+            var read = 0;
+            while ((read = file.Read(buffer, 0, buffer.Length)) > 0)
             {
-                while (true)
-                {
-                    var read = file.Read(buffer, 0, buffer.Length);
-                    if (read <= 0)
-                    {
-                        data = ms.ToArray();
-                        break;
-                    }
-                    ms.Write(buffer, 0, read);
-                }
+                ms.Write(buffer, 0, read);
             }
 
-            return ReadStlData(data);
+            return ms;
         }
 
-        private Mesh ReadStlText(string data)
+        public Mesh CreateMeshFromAscii(string data)
         {
             // do all the stuff to create a mesh
 
             return new Mesh();
         }
 
-        private Mesh ReadStlData(byte[] data)
+        public Mesh CreateMeshFromBinary(MemoryStream stream)
         {
-            // do all the stuff to create a mesh
+            var br = new BinaryReader(stream);
 
-            return new Mesh();
+            // seeks past the header
+            br.BaseStream.Seek(80, SeekOrigin.Begin);
+
+            var numberOfFacets = br.ReadInt32();
+
+            var mesh = new Mesh {Facets = new Collection<Facet>()};
+
+            for (long i = 0; i < numberOfFacets; i++)
+            {
+                mesh.Facets.Add(new Facet
+                                    {
+                                        Normal =
+                                            new Point {X = br.ReadSingle(), Y = br.ReadSingle(), Z = br.ReadSingle()},
+                                        Vertices = new Collection<Point>
+                                                       {
+                                                           new Point
+                                                               {
+                                                                   X = br.ReadSingle(),
+                                                                   Y = br.ReadSingle(),
+                                                                   Z = br.ReadSingle()
+                                                               },
+                                                           new Point
+                                                               {
+                                                                   X = br.ReadSingle(),
+                                                                   Y = br.ReadSingle(),
+                                                                   Z = br.ReadSingle()
+                                                               },
+                                                           new Point
+                                                               {
+                                                                   X = br.ReadSingle(),
+                                                                   Y = br.ReadSingle(),
+                                                                   Z = br.ReadSingle()
+                                                               }
+                                                       }
+                                    });
+
+                // unused attribute byte count
+                var dummy = br.ReadInt16();
+            }
+
+            return mesh;
         }
     }
 }

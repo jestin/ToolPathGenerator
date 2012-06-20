@@ -4,9 +4,10 @@ namespace Service.Interfaces
 {
     public interface IMeshHelper
     {
-        Mesh CenterMesh(Mesh mesh);
-        Mesh PutMeshOnPlatform(Mesh mesh);
+        void CenterMesh(Mesh mesh);
+        void PutMeshOnPlatform(Mesh mesh);
+        void TranslateMesh(Mesh mesh, Point vector);
         bool IsMeshManifold(Mesh mesh);
-        void CalculateBounds(Mesh mesh, out double minX, out double maxX, out double minY, out double maxY, out double minZ, out double maxZ);
+        void CalculateBounds(Mesh mesh, out float minX, out float maxX, out float minY, out float maxY, out float minZ, out float maxZ);
     }
 }
