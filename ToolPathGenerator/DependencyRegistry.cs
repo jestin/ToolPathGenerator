@@ -1,8 +1,8 @@
 ﻿using StructureMap.Configuration.DSL;
-using TestBlockers.Views;
+using ToolPathGenerator.Views;
 using UI.Views;
 
-namespace TestBlockers
+namespace ToolPathGenerator
 {
     public class DependencyRegistry : Registry
     {

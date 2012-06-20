@@ -2,7 +2,7 @@
 using UI.Presenters;
 using UI.Views;
 
-namespace TestBlockers
+namespace ToolPathGenerator
 {
     public class Program
     {

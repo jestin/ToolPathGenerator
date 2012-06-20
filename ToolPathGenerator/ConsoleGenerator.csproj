@@ -8,8 +8,8 @@
     <ProjectGuid>{D9593C29-E0D7-4224-AF09-68B2D5FFB52A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestBlockers</RootNamespace>
-    <AssemblyName>TestBlockers</AssemblyName>
+    <RootNamespace>ToolPathGenerator</RootNamespace>
+    <AssemblyName>ToolPathGenerator</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>

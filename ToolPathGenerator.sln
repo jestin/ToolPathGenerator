@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleGenerator", "TestBlockers\ConsoleGenerator.csproj", "{D9593C29-E0D7-4224-AF09-68B2D5FFB52A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleGenerator", "ToolPathGenerator\ConsoleGenerator.csproj", "{D9593C29-E0D7-4224-AF09-68B2D5FFB52A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolPathGeneratorTests", "TestBlockerTests\ToolPathGeneratorTests.csproj", "{EE83F68D-1A66-4271-9015-77165671D561}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolPathGeneratorTests", "ToolPathGeneratorTests\ToolPathGeneratorTests.csproj", "{EE83F68D-1A66-4271-9015-77165671D561}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework", "Framework\Framework.csproj", "{98EBED4B-BA5D-4175-913D-FB6FD5099703}"
 EndProject
